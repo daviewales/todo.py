@@ -4,8 +4,8 @@
 
 Link `todo.py` to somewhere in your `$PATH`:
 
-    ln -s /path/to/todo.py ~/bin/todo.py
+    ln -s /path/to/todo.py ~/bin/todo
 
-Run `todo.py`.
+Run `todo`.
 
 Profit!
