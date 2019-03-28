@@ -270,7 +270,10 @@ def flatten(list_of_lists):
 
 
 def pretty_print(list_of_strings, padding=2, outline='#'):
-    length_of_longest_string = max([len(i) for i in list_of_strings])
+    try:
+        length_of_longest_string = max([len(i) for i in list_of_strings])
+    except ValueError:
+        length_of_longest_string = 0
     width = length_of_longest_string + 2 * (3*padding + 1)
     height = 1 + 2 * (padding + 1)
     top_bottom_string = outline * width
@@ -315,7 +318,10 @@ def main():
         count = len(merged_task_lists)
         numbered_tasks = [f'{str(count)}. {line}' for count, line in enumerate(merged_task_lists)]
         task_list = list_tasks(numbered_tasks, n=args.task_count, all_tasks=args.all, from_beginning=not args.from_end)
-        pretty_print(task_list)
+        if len(task_list) > 0:
+            pretty_print(task_list)
+        else:
+            pretty_print(['The task list is empty!'])
     elif args.subparser_name == 'done':
         if args.interactive:
             print('This option is not implemented yet')
