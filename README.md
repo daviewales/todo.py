@@ -1,6 +1,18 @@
 # todo.py
 
-## Usage:
+## Install
+
+Clone this repository:
+
+    git clone https://github.com/daviewales/todo.py.git
+    
+Navigate to `todo.py`:
+
+    cd todo.py
+
+Install dependencies (PyYaml):
+
+    pip3 install -r requirements.txt
 
 Link `todo.py` to somewhere in your `$PATH`:
 
@@ -10,7 +22,7 @@ Run `todo -h`.
 
 Profit!
 
-## How it works
+## Usage
 
 `todo.py` creates two lists. The first list contains things ordered from `now`, to `soon`. The second list contains things ordered from `later` to `maybe`.
 
@@ -53,3 +65,14 @@ These lists are stored in a `yaml` file with the following structure:
     - Exercise
 
 The default location of the yaml file is `~/.todo/todo.yml`. It is placed into a hidden directory, rather than as a hidden file in the home directory to allow the use of programs such as [Syncthing](https://syncthing.net/) to synchronise your tasks between computers and devices.
+
+
+### Testing
+
+Run doctests (Use `-v` flag for more info):
+
+    python3 -m doctest todo.py
+    
+OR
+
+    nosetests --with-doctest todo.py
