@@ -7,14 +7,15 @@
 # Tasks are stored in yaml format.
 
 from pathlib import Path
-from yaml import load_all, safe_load_all, safe_dump_all
+from yaml import safe_load_all, safe_dump_all
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
 
 
-TODO_FILE = Path('~/.todo.yml').expanduser()
+TODO_FILE = Path('~/.todo/todo.yml').expanduser()
+Path.mkdir(TODO_FILE.parent, exist_ok=True)
 
 
 def get_args():
