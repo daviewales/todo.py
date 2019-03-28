@@ -1,5 +1,61 @@
 # todo.py
 
+## Examples
+
+	$ todo
+	#################
+	#               #
+	#               #
+	#      Eat      #
+	#               #
+	#               #
+	#################
+	$ todo ls
+	######################
+	#                    #
+	#                    #
+	#       0. Eat       #
+	#      1. Sleep      #
+	#      2. Clean      #
+	#                    #
+	#                    #
+	######################
+	$ todo now Install todo.py
+	$ todo ls
+	################################
+	#                              #
+	#                              #
+	#      0. Install todo.py      #
+	#            1. Eat            #
+	#           2. Sleep           #
+	#                              #
+	#                              #
+	################################
+	$ todo ls -a
+	################################
+	#                              #
+	#                              #
+	#      0. Install todo.py      #
+	#            1. Eat            #
+	#           2. Sleep           #
+	#           3. Clean           #
+	#         4. Exercise          #
+	#                              #
+	#                              #
+	################################
+	$ todo done
+	Install todo.py is done!
+	$ todo ls
+	######################
+	#                    #
+	#                    #
+	#       0. Eat       #
+	#      1. Sleep      #
+	#      2. Clean      #
+	#                    #
+	#                    #
+	######################
+
 ## Install
 
 Clone this repository:
