@@ -294,19 +294,19 @@ def main():
     except FileNotFoundError:
         task_lists = [[],[]]
 
-    if args.subparser_name == 'now':
+    if args.subparser_name in ['now', 'n']:
         task = ' '.join(args.task)
         add_task_to_now(task, task_lists)
         write_tasks(task_lists, TODO_FILE)
-    elif args.subparser_name == 'soon':
+    elif args.subparser_name in ['soon', 's']:
         task = ' '.join(args.task)
         add_task_to_soon(task, task_lists)
         write_tasks(task_lists, TODO_FILE)
-    elif args.subparser_name == 'later':
+    elif args.subparser_name in ['later', 'l']:
         task = ' '.join(args.task)
         add_task_to_later(task, task_lists)
         write_tasks(task_lists, TODO_FILE)
-    elif args.subparser_name == 'maybe':
+    elif args.subparser_name in ['maybe', 'm']:
         task = ' '.join(args.task)
         add_task_to_maybe(task, task_lists)
         write_tasks(task_lists, TODO_FILE)
