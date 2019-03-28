@@ -23,6 +23,7 @@ def get_args():
 
     # create top level parser
     parser = argparse.ArgumentParser(description='Manage a todo list.')
+    parser.add_argument('--ugly', '-u', action='store_true', help='No pretty printing!')
     subparsers = parser.add_subparsers(dest='subparser_name', help='View help for sub-commands with "%(prog)s command -h"')
 
     # create parser for the 'now' command
@@ -288,9 +289,17 @@ def pretty_print(list_of_strings, padding=2, outline='#'):
     for line in lines:
         print(line)
 
+def ugly_print(list_of_strings):
+    for line in list_of_strings:
+        print(line)
+
 
 def main():
     args = get_args()
+    if args.ugly:
+        print_out = ugly_print
+    else:
+        print_out = pretty_print
 
     try:
         task_lists = load_tasks(TODO_FILE)
@@ -319,9 +328,9 @@ def main():
         numbered_tasks = [f'{str(count)}. {line}' for count, line in enumerate(merged_task_lists)]
         task_list = list_tasks(numbered_tasks, n=args.task_count, all_tasks=args.all, from_beginning=not args.from_end)
         if len(task_list) > 0:
-            pretty_print(task_list)
+            print_out(task_list)
         else:
-            pretty_print(['The task list is empty!'])
+            print_out(['The task list is empty!'])
     elif args.subparser_name == 'done':
         if args.interactive:
             print('This option is not implemented yet')
@@ -330,7 +339,7 @@ def main():
             print(f'{deleted_task} is done!')
             write_tasks(task_lists, TODO_FILE)
     else:
-        pretty_print([current_task(flatten(task_lists))])
+        print_out([current_task(flatten(task_lists))])
 
 
 
