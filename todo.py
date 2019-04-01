@@ -21,7 +21,6 @@ except KeyError:
 Path.mkdir(TODO_PATH, exist_ok=True)
 
 TODO_FILE = TODO_PATH / Path('todo.yml')
-print(TODO_FILE)
 
 
 def get_args():
