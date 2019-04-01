@@ -122,6 +122,38 @@ These lists are stored in a `yaml` file with the following structure:
 
 The default location of the yaml file is `~/.todo/todo.yml`. It is placed into a hidden directory, rather than as a hidden file in the home directory to allow the use of programs such as [Syncthing](https://syncthing.net/) to synchronise your tasks between computers and devices.
 
+### TODO_PATH Environment variable
+
+`todo.py` supports the environment variable `TODO_PATH`. The value of `TODO_PATH` must be a path to a directory.
+For example the following will create a todo list in the Desktop folder, and add 'Sleep' as the current task:
+
+    TODO_PATH="~/Desktop" todo now Sleep
+
+This may be useful if you need to store your `todo.py` file in a different directory to the default, such as when running in Termux on Android.
+
+### Ugly mode
+
+By default, `todo.py` outputs tasks enclosed by a border of '#' symbols.
+Passing the command-line argument `--ugly` or `-u` will display the tasks in a more straightforward manner.
+
+### Running in Termux on Android
+
+`todo.py` should work find in Termux.
+However, there are a number of tweaks that you may wish to use.
+
+You will need to edit the following file:
+
+    /data/data/com.termux/file/usr/etc/bash.bashrc
+
+Add the following lines:
+
+    export TODO_FILE="~/storage/shared/todo"
+    alias todo="todo -u"
+
+This assumes that you have linked `todo.py` to somewhere in your path, using `todo` as the name of the link.
+
+This will change the default directory to one which is writable by Termux.
+It will also use 'Ugly mode' for outputting tasks, which works better on a small display.
 
 ### Testing
 
