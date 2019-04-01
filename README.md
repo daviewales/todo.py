@@ -147,7 +147,7 @@ You will need to edit the following file:
 
 Add the following lines:
 
-    export TODO_FILE="~/storage/shared/todo"
+    export TODO_PATH="~/storage/shared/todo"
     alias todo="todo -u"
 
 This assumes that you have linked `todo.py` to somewhere in your path, using `todo` as the name of the link.
